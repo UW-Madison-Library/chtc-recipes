@@ -1,0 +1,16 @@
+# wos-sortrefs.sub
+# Submit a job to sort the collected references from a matching job against the Web of Science data set
+universe = vanilla
+log = wos_sortrefs_$(Cluster).log
+error = wos_sortrefs_$(Cluster)_$(Process).err
+executable = wos_sortrefs.sh
+output = wos_sortrefs_$(Cluster)_$(Process).out
+
+should_transfer_files = YES
+transfer_input_files = step1-references/
+transfer_output_files = step2-references
+
+request_cpus = 1
+request_memory = 1GB
+
+queue

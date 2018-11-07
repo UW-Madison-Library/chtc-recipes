@@ -1,0 +1,20 @@
+# wos-findbywosexport.sub
+# Submit a job to find records by IDs in the Web of Science data set
+universe = vanilla
+log = wos_findbywosexport_$(Cluster).log
+error = wos_findbywosexport_$(Cluster)_$(Process).err
+executable = wos_findbywosexport.sh
+arguments = $(year) $(Cluster) $(Process)
+output = wos_findbywosexport_$(Cluster)_$(Process).out
+Requirements = (Target.HasGluster == true)
+
+should_transfer_files = YES
+transfer_input_files = python-3.6.7-with-wosexpl-0.2.1.tar.gz, find_by_wos_export.py, finder_logging.py, sample-export.txt
+transfer_output_remaps = "article-match-references-$(year).tsv=step1-references/article-match-references-$(year).tsv"
+
+request_cpus = 1
+request_memory = 1GB
+request_disk = 20GB
+
+# Tell HTCondor to run one job for each year in the file:
+queue year from years.txt
