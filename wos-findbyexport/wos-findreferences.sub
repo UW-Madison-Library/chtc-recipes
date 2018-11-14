@@ -15,5 +15,4 @@ request_cpus = 1
 request_memory = 1GB
 request_disk = 20GB
 
-# Tell HTCondor to run one job for each year in the file:
-queue year from step2-references/years.txt
+queue

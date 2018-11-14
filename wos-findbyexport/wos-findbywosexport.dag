@@ -1,0 +1,5 @@
+JOB A wos-findbywosexport.sub
+JOB B wos-sortrefs.sub
+JOB C wos-findreferences.sub
+PARENT A CHILD B
+PARENT B CHILD C
