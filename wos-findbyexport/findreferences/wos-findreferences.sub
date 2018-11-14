@@ -9,7 +9,7 @@ output = wos_findreferences_$(Cluster)_$(Process).out
 Requirements = (Target.HasGluster == true)
 
 should_transfer_files = YES
-transfer_input_files = python-3.6.7-with-wosexpl-0.2.1.tar.gz, find_references.py, finder_logging.py, step2-references/$(year)-references.tsv
+transfer_input_files = python-3.6.7-with-wosexpl-0.2.1.tar.gz, find_references.py, finder_logging.py, ../sortreferences/$(year)-references.tsv
 
 request_cpus = 1
 request_memory = 1GB

@@ -1,5 +1,5 @@
-JOB A wos-findbywosexport.sub
-JOB B wos-sortrefs.sub
-JOB C wos-findreferences.sub
+JOB A wos-findbywosexport.sub DIR findbyexportfile
+JOB B wos-sortrefs.sub DIR sortreferences
+SUBDAG EXTERNAL C wos-findreferences.dag
 PARENT A CHILD B
 PARENT B CHILD C

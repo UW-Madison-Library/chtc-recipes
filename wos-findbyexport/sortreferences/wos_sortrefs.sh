@@ -23,6 +23,6 @@ count=0
 cat step2-references/years.txt | while read line
 do
     count=$((count + 1))
-    echo "JOB B${count} wos-findreferences.sub" >> wos-findreferences.dag
+    echo "JOB B${count} wos-findreferences.sub DIR findreferences" >> wos-findreferences.dag
     echo "VARS B${count} year=\"${line}\"" >> wos-findreferences.dag
 done
