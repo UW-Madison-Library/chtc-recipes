@@ -9,7 +9,7 @@ output = wos_findbywosexport_$(Cluster)_$(Process).out
 Requirements = (Target.HasGluster == true)
 
 should_transfer_files = YES
-transfer_input_files = python-3.6.7-with-wosexpl-0.2.1.tar.gz, find_by_wos_export.py, ../finder_logging.py, sample-export.txt
+transfer_input_files = ../python-3.6.7-with-wosexpl-0.2.1.tar.gz, find_by_wos_export.py, ../finder_logging.py, sample-export.txt
 
 request_cpus = 1
 request_memory = 1GB
