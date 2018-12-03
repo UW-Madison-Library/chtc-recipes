@@ -1,33 +1,46 @@
 # Web of Science: Find Articles by Export File
 
-This collection of scripts is used to pull a set of article records out of the Web of Science (WOS) data set. It runs over the CHTC WOS article data set serialized as JSON. It consists of three jobs chained together:
+This collection of scripts is used to pull a set of article records out of the Web of Science (WOS) data set. It runs over the CHTC WOS article data set that is serialized as JSON. It consists of four steps of jobs chained together:
 
-## Step 1: Find Article Records by WOS Export File
+## Step 1: Identify The Initial Batch of Years
 
-This job reads a WOS saved search export file downloaded from the WOS UI. The WOS article IDs (also referred to as accession numbers) are matched against the years in which they are published. This job will also generate a list of IDs for the cited references for each matched article.
+This job reads a WOS saved search export file (`savedrecs.txt`) that was downloaded from the WOS UI. Given that this input file is what will vary for each person running this set of jobs, the first step is to identify what years of publication exist in the file. The job is a simple wrapper around a python script to parse the export file. The output of this job will then be fed into the next job, which finds the initial list of article records.
 
-* `wos-findbywosexport.sub`
-* `wos_findbywosexport.sh`
-* `find_by_wos_export.py`
-* `finder_logging.py`
-* `years.txt`
+**Sub-directory:** `parsepublicationyears`
+**Output:** `years.txt`
+**Post-processing:** the `years.txt` file will be moved into the sub-directory for step 2
 
-This also requires a CHTC compiled python that includes the `wos_explorer` package. See the [Web of Science Explorer](https://gitlab.library.wisc.edu/ltg/wos-explorer) repository.
+## Step 2: Find Article Records by WOS Export File
 
-## Step 2: Sort the Cited Reference IDs by Publication Year
+The WOS article IDs (also referred to as accession numbers) in `savedrecs.txt` are matched against the years in which they are published. This job will also generate a list of IDs for the cited references for each matched article.
+
+**Sub-directory:** `findbyexportfile`
+**Output:**
+
+* `article-matches-<YEAR>.json`: article record data files
+* `references-<YEAR>.tsv`: reference ID/Year data files
+
+**Post-processing:** the `references-<YEAR>.tsv` files will be moved into the sub-directory for step 3
+
+## Step 3: Sort the Cited Reference IDs by Publication Year
 
 This job takes the cited reference IDs written out from step 1 and sorts them by the years in which they were published so that the Step 3 jobs will only need to know about the IDs for a year in which they are written.
 
-* `wos-sortrefs.sub`
-* `wos-sortrefs.sh`
-* contents from `step1-references/`
+**Sub-directory:** `sortreferences`
+**Output:**
 
-## Step 3: Retrieve the Cited Reference Article Records
+* `<YEAR>-references.tsv`: WOS ID files isolated by <YEAR>
+* `wos-findreferences.dag`: a generated DAGMAN file that indicates what years' data step 4 should be run over
 
-This job takes the `step2-references/` data and generates a job for each year that has a reference.
+**Post-processing:** the `<YEAR>-references.tsv` files will be moved into the sub-directory for step 4
 
-* `wos-findreferences.sub`
-* `wos_findreferences.sh`
-* `find_references.py`
-* `finder_logging.py`
-* contents from `step2-references/`
+## Step 4: Retrieve the Cited Reference Article Records
+
+This job is equivalent to step 2. It matches article records by their IDs. The input is the IDs of the cited references found in step 2.
+
+**Sub-directory:** `findreferences`
+**Output:** `referenced-article-matches-<YEAR>.json` - article record data files
+
+## Notes
+
+Steps 2 and 4 also require a CHTC compiled python that includes the `wos_explorer` package. See the [Web of Science Explorer](https://gitlab.library.wisc.edu/ltg/wos-explorer) repository.
