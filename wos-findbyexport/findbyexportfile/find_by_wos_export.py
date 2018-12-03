@@ -16,7 +16,7 @@ cluster_id = sys.argv[2]
 process_id = sys.argv[3]
 
 input_file      = "data/articles.json"
-exported_file   = "sample-export.txt"
+exported_file   = "savedrecs.txt"
 output_file     = "article-matches-" + year + ".json"
 references_file = "references-" + year + ".tsv"
 

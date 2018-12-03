@@ -1,7 +1,10 @@
-JOB A wos-findbywosexport.sub DIR findbyexportfile
-SCRIPT POST A mv_step1_refs.sh
-JOB B wos-sortrefs.sub DIR sortreferences
+JOB A wos-parseyears.sub DIR parsepublicationyears
+SCRIPT POST A mv_step1_years.sh
+JOB B wos-findbywosexport.sub DIR findbyexportfile
 SCRIPT POST B mv_step2_refs.sh
-SUBDAG EXTERNAL C wos-findreferences.dag
+JOB C wos-sortrefs.sub DIR sortreferences
+SCRIPT POST C mv_step3_refs.sh
+SUBDAG EXTERNAL D wos-findreferences.dag
 PARENT A CHILD B
 PARENT B CHILD C
+PARENT C CHILD D

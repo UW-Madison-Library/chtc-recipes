@@ -1,7 +1,5 @@
 #!/bin/bash
 
-mkdir step2-references
-
 cat references-* | while read line
 do
     if [ "${line:0:5}" != "BLANK" ]; then
