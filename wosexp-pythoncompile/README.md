@@ -1,4 +1,4 @@
-# Steps for Compiling Python with the WOS Explorer Package for use on CHTC Servers
+# Compile Python with the WOS Explorer Package for Use on CHTC Servers
 
 The steps below outline the process to compile Python 3 with the wos-explorer package so that the wos-explorer code can be used within CHTC jobs.
 
@@ -20,7 +20,7 @@ This is a Python package developed to make it easy to work with the Web of Scien
 
 ### 1) Clone/checkout a copy of the WOS Explorer code and create a distribution file from the source.
 
-In a separate location on your computer run these commands.
+Choose a location on your computer to download the git repository and run these commands.
 
 ```
 $ git clone git@gitlab.library.wisc.edu:ltg/wos-explorer.git
@@ -61,6 +61,8 @@ $ scp interactive.sub bucky@submit-1.chtc.wisc.edu:~/
 
 Compiling Python from source involves submitting a job in which your shell session is transferred with the job, as it were. See the "CHTC Python Build Instructions" link above for details. The job is defined in the `interactive.sub` file within this project.
 
+Note that you may need to adjust the version numbers in the `interactive.sub` file for the version numbers you are using. These numbers can be found in submit file's `transfer_input_files` property.
+
 a) Submit the interactive job, then wait for a prompt indicating you have a session.
 
 ```
@@ -73,7 +75,7 @@ Welcome to slot1_2@matlab-build-1.chtc.wisc.edu!
 
 b) Compile Python from source.
 
-This is a standard compilation from source process in a unix like environment. You are compiling this on a CHTC execution server so that you can then use the Python install with each submitted job.
+This is a standard Unix style compilation from source process. Compiling Python on a CHTC execution server ensures that your CHTC jobs will be using a compatible Python version.
 
 ```
 [bucky@matlab-build-1 dir_6572]$ mkdir python
@@ -96,14 +98,14 @@ This step will install the WOS Explorer package into the Python installation tha
 [bucky@matlab-build-1 dir_6572]$ pip install wos_explorer-0.2.1.tar.gz
 ```
 
-d) Finish up by creating a tar package and exiting the interactive session, which will copy the tar.gz file back.
+d) Finish up by creating a tar package and exiting the interactive session
 
 ```
 [bucky@matlab-build-1 dir_6572]$ tar -czvf python-3.6.7-with-wosexpl-0.2.1.tar.gz python/
 [bucky@matlab-build-1 dir_6572]$ exit
 ```
 
-After exiting the job on the build server the interactive session will complete and the generated tarball will be copied back to your submit server account.
+After exiting the job on the execution server, the interactive session will complete and the generated tarball will be copied back to your submit server account.
 
 ### 5) Copy the Python distribution back to your local hard drive
 
