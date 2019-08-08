@@ -1,0 +1,18 @@
+# wos_citationpairs.sub
+# Submit a job to find citing-cited pairs of articles by IDs in the Web of Science data set
+universe = vanilla
+log = wos_citationpairs_$(Cluster).log
+error = wos_citationpairs_$(Cluster)_$(Process).err
+executable = wos_citationpairs.sh
+arguments = $(year) $(Cluster) $(Process)
+output = wos_citationpairs_$(Cluster)_$(Process).out
+Requirements = (Target.HasGluster == true)
+
+should_transfer_files = YES
+transfer_input_files = ../python-3.6.7-with-wosexpl-0.2.1.tar.gz, find_citation_pairs.py
+
+request_cpus = 2
+request_memory = 4GB
+request_disk = 110GB
+
+queue year from years.txt
