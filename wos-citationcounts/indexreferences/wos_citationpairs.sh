@@ -1,10 +1,11 @@
 #!/bin/bash
 
 # Unpack and setup the CHTC compiled Python build
-tar -xzf python-3.6.7-with-wosexpl-0.2.1.tar.gz
-export PATH=$(pwd)/python/bin:$PATH
-mkdir home
-export HOME=$(pwd)/home
+tar -xzf python36.tar.gz
+tar -xzf wos_explorer-0.2.1.tar.gz
+
+export PATH=$PWD/python/bin:$PATH
+export PYTHONPATH=$PWD/wos_explorer-0.2.1
 
 # Command line specifies the year to process
 year="$1"
@@ -19,6 +20,10 @@ mkdir $data_dir
 cp $input_file $data_dir
 
 # Run the Python code to process the file and find records
-python find_citation_pairs.py "${data_dir}/articles.json" $data_dir $year
+python3 find_citation_pairs.py "${data_dir}/articles.json" $data_dir $year
 
-cp "${data_dir}/"*.txt /mnt/gluster/stephenmeyer/citation-pairs/
+for file in data/*.txt ; do
+  gzip $file
+done
+
+cp "${data_dir}/"*.gz /mnt/gluster/stephenmeyer/citation-pairs/
