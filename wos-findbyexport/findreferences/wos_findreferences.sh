@@ -13,7 +13,7 @@ process_id="$3"
 
 # Create a directory for the article data file so it is not copied back to the submit server
 working_data_dir="data"
-source_file="/mnt/gluster/stephenmeyer/CORE_ANNUAL_1900-2017/${year}_CORE/articles.json"
+source_file="/mnt/gluster/data2/clarivate_data/CORE_ANNUAL_1900-2017/${year}_CORE/articles.json"
 
 # Copy the source file to the working location
 mkdir $working_data_dir

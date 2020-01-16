@@ -26,4 +26,4 @@ for file in data/*.txt ; do
   gzip $file
 done
 
-cp "${data_dir}/"*.gz /mnt/gluster/stephenmeyer/citation-pairs/
+cp "${data_dir}/"*.gz /mnt/gluster/<USERNAME>/citation-pairs/
