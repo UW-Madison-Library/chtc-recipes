@@ -1,0 +1,15 @@
+universe = vanilla
+log = wos_concatsort_$(Cluster).log
+error = wos_concatsort_$(Cluster)_$(Process).err
+executable = wos_concat_and_sort.sh
+arguments = $(prefix) $(Cluster) $(Process)
+output = wos_concatsort_$(Cluster)_$(Process)_$(prefix).out
+Requirements = (Target.HasGluster == true)
+
+
+request_cpus = 1
+request_memory = 4GB
+request_disk = 64GB
+
+
+queue prefix from prefixes.txt
