@@ -1,0 +1,18 @@
+# wos_citationpairs.sub
+# Submit a job to find citing-cited pairs of articles by IDs in the Web of Science data set
+universe = vanilla
+log = wos_countreferences_$(Cluster).log
+error = wos_countreferences_$(Cluster)_$(Process).err
+executable = wos_countreferences.sh
+arguments = $(prefix) $(Cluster) $(Process)
+output = wos_countreferences_$(Cluster)_$(Process).out
+Requirements = (Target.HasGluster == true)
+
+should_transfer_files = YES
+transfer_input_files = http://proxy.chtc.wisc.edu/SQUID/chtc/python36.tar.gz, count_sorted_references.py
+
+request_cpus = 1
+request_memory = 4GB
+request_disk = 20GB
+
+queue prefix from prefixes.txt
