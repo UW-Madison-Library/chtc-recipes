@@ -12,4 +12,4 @@ request_memory = 4GB
 request_disk = 64GB
 
 
-queue prefix from prefixes.txt
+queue prefix from ../prefixes.txt
