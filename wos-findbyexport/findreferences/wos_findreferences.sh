@@ -1,10 +1,11 @@
 #!/bin/bash
 
 # Unpack and setup the CHTC compiled Python build
-tar -xzf python-3.6.7-with-wosexpl-0.2.1.tar.gz
-export PATH=$(pwd)/python/bin:$PATH
-mkdir home
-export HOME=$(pwd)/home
+tar -xzf python36.tar.gz
+tar -xzf wos_explorer-0.2.1.tar.gz
+
+export PATH=$PWD/python/bin:$PATH
+export PYTHONPATH=$PWD/wos_explorer-0.2.1
 
 # Command line specifies the year to process
 year="$1"
@@ -20,4 +21,4 @@ mkdir $working_data_dir
 cp $source_file $working_data_dir
 
 # Run the Python code to process the file and find records
-python find_references.py $year $cluster_id $process_id
+python3 find_references.py $year $cluster_id $process_id

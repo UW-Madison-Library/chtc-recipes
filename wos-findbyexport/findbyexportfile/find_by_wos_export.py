@@ -1,11 +1,11 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 import sys
 import pathlib
 import csv
 from datetime import datetime
 from wos_explorer.article_collection import ArticleCollection
-from wos_explorer.matchers import IdMatcher, PhraseMatcher
+from wos_explorer.matchers import IdMatcher
 
 import finder_logging
 
