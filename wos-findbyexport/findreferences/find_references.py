@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 
+import glob
+import os
 import sys
-import pathlib
-import csv
 from datetime import datetime
 from wos_explorer.article_collection import ArticleCollection
 from wos_explorer.matchers import IdMatcher
@@ -17,12 +17,12 @@ process_id = sys.argv[3]
 
 
 print( "Find References - Processing Data for Year:", year, cluster_id, process_id )
-
 finder_logging.configure(cluster_id, process_id)
 
-input_file      = "data/articles.json"
+input_files     = glob.glob("data/*.json")
 references_file = year + "-references.tsv"
 output_file     = "referenced-article-matches-" + year + ".json"
+
 
 ids = []
 with open(references_file) as file:
@@ -30,7 +30,10 @@ with open(references_file) as file:
         if len(line.strip().split()) == 2:
             ids.append(line.strip().split('\t')[1])
 
-ArticleCollection(input_file).select(IdMatcher(ids), output_file)
+criteria = IdMatcher(ids)
+for input_file in input_files:
+    output_file = os.path.splitext(os.path.basename(input_file))[0] + "-referenced-article-matches.json"
+    ArticleCollection(input_file).select(criteria, output_file)
 
 
 finish = datetime.today()
