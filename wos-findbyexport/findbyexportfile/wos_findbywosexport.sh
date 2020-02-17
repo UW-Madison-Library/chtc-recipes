@@ -14,11 +14,16 @@ process_id="$3"
 
 # Create a directory for the article data file so it is not copied back to the submit server
 working_data_dir="data"
-source_file="/mnt/gluster/data2/clarivate_data/CORE_ANNUAL_1900-2017/${year}_CORE/articles.json"
+source_dir="/mnt/gluster/data2/clarivate_data/2018-full-extract"
 
-# Copy the source file to the working location
+# Copy the source files to the working location. The Emerging Science Citation Index (ESCI)
+# files only exist from 2005 onward.
 mkdir $working_data_dir
-cp $source_file $working_data_dir
+cp "${source_dir}/${year}_CORE.json.gz" $working_data_dir
+if [ $year -gt "2004" ]; then
+  cp "${source_dir}/${year}_ESCI.json.gz" ${working_data_dir}
+fi
+gunzip "${working_data_dir}/"*.gz
 
 # Run the Python code to process the file and find records
 python3 find_by_wos_export.py $year $cluster_id $process_id
