@@ -13,17 +13,25 @@ cluster_id="$2"
 process_id="$3"
 
 # Create a directory for the article data file so it is not copied back to the submit server
-input_file="/mnt/gluster/data2/clarivate_data/CORE_ANNUAL_1900-2017/${year}_CORE/articles.json"
-data_dir="data"
-# Copy the source file to the working location
-mkdir $data_dir
-cp $input_file $data_dir
+source_dir="/mnt/gluster/data2/clarivate_data/2018-full-extract"
+working_data_dir="data"
+
+# Copy the source files to the working location. The Emerging Science Citation Index (ESCI)
+# files only exist from 2005 onward.
+mkdir $working_data_dir
+cp "${source_dir}/${year}_CORE.json.gz" $working_data_dir
+if [ $year -gt "2004" ]; then
+  cp "${source_dir}/${year}_ESCI.json.gz" ${working_data_dir}
+fi
+gunzip "${working_data_dir}/"*.gz
 
 # Run the Python code to process the file and find records
-python3 find_citation_pairs.py "${data_dir}/articles.json" $data_dir $year
+python3 find_citation_pairs.py $working_data_dir $year
 
 for file in data/*.txt ; do
   gzip $file
 done
 
-cp "${data_dir}/"*.gz /mnt/gluster/<USERNAME>/citation-pairs/
+# IMPORTANT: change the <USERNAME> to your CHTC/NetID username
+mkdir /mnt/gluster/<USERNAME>/citation-pairs
+cp "${working_data_dir}/"*.gz /mnt/gluster/<USERNAME>/citation-pairs/
