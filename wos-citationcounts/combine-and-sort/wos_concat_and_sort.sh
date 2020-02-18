@@ -7,6 +7,7 @@ process_id="$3"
 
 echo "Sorting records for prefix: ${prefix}. Condor Cluster: ${cluster_id}, Condor Process: ${process_id}"
 
+# IMPORTANT: change the <USERNAME> to your CHTC/NetID username
 src_dir="/mnt/gluster/<USERNAME>/citation-pairs"
 data_dir="data"
 mkdir -p $data_dir
