@@ -33,5 +33,5 @@ for file in data/*.txt ; do
 done
 
 # IMPORTANT: change the <USERNAME> to your CHTC/NetID username
-mkdir /mnt/gluster/<USERNAME>/citation-pairs
+mkdir -p /mnt/gluster/<USERNAME>/citation-pairs
 cp "${working_data_dir}/"*.gz /mnt/gluster/<USERNAME>/citation-pairs/
