@@ -6,7 +6,7 @@ error = wos_findbywosexport_$(Cluster)_$(Process).err
 executable = wos_findbywosexport.sh
 arguments = $(year) $(Cluster) $(Process)
 output = wos_findbywosexport_$(Cluster)_$(Process).out
-Requirements = (Target.HasGluster == true)
+Requirements = (HasCHTCStaging == true)
 
 should_transfer_files = YES
 transfer_input_files = http://proxy.chtc.wisc.edu/SQUID/chtc/python36.tar.gz, ../wos_explorer-0.2.1.tar.gz, ../finder_logging.py, ../savedrecs.txt, find_by_wos_export.py

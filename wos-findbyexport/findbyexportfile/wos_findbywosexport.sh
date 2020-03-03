@@ -14,7 +14,7 @@ process_id="$3"
 
 # Create a directory for the article data file so it is not copied back to the submit server
 working_data_dir="data"
-source_dir="/mnt/gluster/data2/clarivate_data/2018-full-extract"
+source_dir="/staging/groups/clarivate_data/2018-complete-extract"
 
 # Copy the source files to the working location. The Emerging Science Citation Index (ESCI)
 # files only exist from 2005 onward.
