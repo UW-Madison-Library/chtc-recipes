@@ -8,24 +8,24 @@ process_id="$3"
 echo "Sorting records for prefix: ${prefix}. Condor Cluster: ${cluster_id}, Condor Process: ${process_id}"
 
 # IMPORTANT: change the <USERNAME> to your CHTC/NetID username
-src_dir="/mnt/gluster/<USERNAME>/citation-pairs"
+src_dir="/staging/<USERNAME>/citation-pairs"
 data_dir="data"
 mkdir -p $data_dir
 
-# Gather the data from the Gluster file system.
+# Gather the data from the Staging file system.
 echo "Starting data fetch at `date`"
 zipped_file_glob="${prefix}"-*.txt.gz
 cp $src_dir/$zipped_file_glob $data_dir
 echo "Data fetch completed at `date`"
 
-# Unzip the files that have been compressed to save space on the Gluster file system
+# Unzip the files that have been compressed to save space on the Staging file system
 echo "Unzipping files at `date`"
 for file in data/$zipped_file_glob ; do
   gunzip $file
 done
 echo "Finished unzipping files at `date`"
 
-# Combine all data into a single file, sort it, compress it and copy it back to the Gluster file system
+# Combine all data into a single file, sort it, compress it and copy it back to the Staging file system
 echo "Sorting files at `date`"
 unzipped_file_glob="${prefix}-*.txt"
 sorted_file="${prefix}-records.sorted.txt"

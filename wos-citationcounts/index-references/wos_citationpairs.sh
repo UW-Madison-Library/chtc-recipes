@@ -13,7 +13,7 @@ cluster_id="$2"
 process_id="$3"
 
 # Create a directory for the article data file so it is not copied back to the submit server
-source_dir="/mnt/gluster/data2/clarivate_data/2018-full-extract"
+source_dir="/staging/groups/clarivate_data/2018-complete-extract"
 working_data_dir="data"
 
 # Copy the source files to the working location. The Emerging Science Citation Index (ESCI)
@@ -33,5 +33,6 @@ for file in data/*.txt ; do
 done
 
 # IMPORTANT: change the <USERNAME> to your CHTC/NetID username
-mkdir -p /mnt/gluster/<USERNAME>/citation-pairs
-cp "${working_data_dir}/"*.gz /mnt/gluster/<USERNAME>/citation-pairs/
+staging_storage_dir="/staging/<USERNAME>/citation-pairs"
+mkdir -p $staging_storage_dir
+cp "${working_data_dir}/"*.gz $staging_storage_dir

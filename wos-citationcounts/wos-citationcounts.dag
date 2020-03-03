@@ -1,5 +1,5 @@
-JOB A wos_citationpairs.sub DIR index-references
-JOB B wos_concatsort.sub DIR combine-and-sort
-JOB C wos_countreferences.sub DIR count-references
+SUBDAG EXTERNAL A wos_citationpairs.dag DIR index-references
+SUBDAG EXTERNAL B wos_concatsort.dag DIR combine-and-sort
+SUBDAG EXTERNAL C wos_countreferences.dag DIR count-references
 PARENT A CHILD B
 PARENT B CHILD C
