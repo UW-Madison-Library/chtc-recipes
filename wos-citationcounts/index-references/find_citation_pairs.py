@@ -9,7 +9,7 @@ from datetime import datetime
 from wos_explorer.article_collection import ArticleCollection
 
 
-SOURCE_ID_PATTERN = re.compile('.+\.\d+$')
+CHILD_ID_PATTERN = re.compile('.+\.\d+$')
 
 
 def get_file_bin(output_files, article_id, output_dir, year):
@@ -47,10 +47,10 @@ def matches_source_item(reference_id):
     """
     if not reference_id.strip():
         return False
-    elif SOURCE_ID_PATTERN.match(reference_id) is not None:
-        return True
-    else:
+    elif CHILD_ID_PATTERN.match(reference_id) is not None:
         return False
+    else:
+        return True
 
 
 
