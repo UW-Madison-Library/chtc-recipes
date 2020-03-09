@@ -13,7 +13,7 @@ print("Identifying Years in WOS Export File")
 years = set()
 for article in csv.DictReader( open(exported_file), delimiter='\t' ):
     year = int(article['PY'])
-    if year >= 1945 and year <= 2017:
+    if year >= 1945 and year <= 2018:
         years.add(year)
     elif year < 1945:
         years.add(1900)
