@@ -13,14 +13,14 @@ cluster_id="$2"
 process_id="$3"
 
 # Create a directory for the article data file so it is not copied back to the submit server
-source_dir="/staging/groups/clarivate_data/2018-complete-extract"
+source_dir="/staging/groups/clarivate_data/2020-complete-extract"
 working_data_dir="data"
 
 # Copy the source files to the working location. The Emerging Science Citation Index (ESCI)
 # files only exist from 2005 onward.
 mkdir $working_data_dir
 cp "${source_dir}/${year}_CORE.json.gz" $working_data_dir
-if [ $year -gt "2004" ]; then
+if [ $year -gt "2014" ]; then
   cp "${source_dir}/${year}_ESCI.json.gz" ${working_data_dir}
 fi
 gunzip "${working_data_dir}/"*.gz
