@@ -20,7 +20,7 @@ source_dir="/staging/groups/clarivate_data/2020-complete-extract"
 # files only exist from 2015 onward.
 mkdir $working_data_dir
 cp "${source_dir}/${year}_CORE.json.gz" $working_data_dir
-if [ $year -gt "2015" ]; then
+if [ $year -gt "2014" ]; then
   cp "${source_dir}/${year}_ESCI.json.gz" ${working_data_dir}
 fi
 gunzip "${working_data_dir}/"*.gz
