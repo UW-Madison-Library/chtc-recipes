@@ -6,7 +6,7 @@ A repository to collect the submit files and scripts used in Center for High Thr
 
 ### WOS Explorer
 
-See: [WOS Explorer](https://gitlab.library.wisc.edu/ltg/wos-explorer)
+See: [WOS Explorer](https://github.com/UW-Madison-Library/wos-explorer)
 
 This is a Python package developed to make it easy to work with the Web of Science (WOS) data set. It is designed to work with the WOS JSON data that is available in the CHTC environment.
 
@@ -15,7 +15,7 @@ This is a Python package developed to make it easy to work with the Web of Scien
 Choose a location on your computer to clone the git repository:
 
 ```
-$ git clone git@gitlab.library.wisc.edu:ltg/wos-explorer.git
+$ git clone git@github.com:UW-Madison-Library/wos-explorer.git
 $ cd wos-explorer
 $ python setup.py sdist
 ```

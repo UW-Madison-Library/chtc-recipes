@@ -47,13 +47,13 @@ This job is equivalent to step 2. It matches article records by their IDs. The i
 
 ### Notes
 
-Steps 2 and 4 also require a Python distribution package for the `wos_explorer` library. See the [Web of Science Explorer](https://gitlab.library.wisc.edu/ltg/wos-explorer) repository.
+Steps 2 and 4 also require a Python distribution package for the `wos_explorer` library. See the [Web of Science Explorer](https://github.com/UW-Madison-Library/wos-explorer) repository.
 
 ## Running the Job
 
 Follow these steps to run these CHTC DAG jobs.
 
-1. [Generate a Python distribution package for the WOS Explorer library](https://gitlab.library.wisc.edu/ltg/chtc-recipes/tree/master/wosexp-pythoncompile)
+1. [Generate a Python distribution package for the WOS Explorer library](https://github.com/UW-Madison-Library/chtc-recipes#creating-a-python-package-for-the-wos-explorer-for-use-within-chtc)
 1. Upload the Python `wos_explorer-<VERSION>-.tar.gz` package from step 1 to your account on the CHTC submit server
 1. Replace the `savedrecs.txt` file as needed
 1. Copy the contents of this git project to your account on the CHTC submit server.
