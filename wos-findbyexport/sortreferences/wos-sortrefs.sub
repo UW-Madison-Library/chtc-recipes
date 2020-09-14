@@ -12,5 +12,6 @@ transfer_output_remaps = "wos-findreferences.dag = ../wos-findreferences.dag"
 
 request_cpus = 1
 request_memory = 1GB
+request_disk = 50GB
 
 queue
