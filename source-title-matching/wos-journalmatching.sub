@@ -1,0 +1,19 @@
+# wos-findbywosexport.sub
+# Submit a job to find records by IDs in the Web of Science data set
+universe = vanilla
+log = wos_journalmatching_$(Cluster).log
+error = wos_journalmatching_$(Cluster)_$(Process).err
+executable = wos_journalmatching.sh
+arguments = $(year) $(Cluster) $(Process)
+output = wos_journalmatching_$(Cluster)_$(Process).out
+Requirements = (HasCHTCStaging == true)
+
+should_transfer_files = YES
+transfer_input_files = http://proxy.chtc.wisc.edu/SQUID/chtc/python36.tar.gz, wos_explorer-0.5.0.tar.gz, finder_logging.py, match_journals.py, journals.csv
+
+request_cpus = 1
+request_memory = 1GB
+request_disk = $(disk_size)
+
+# Tell HTCondor to run one job for each year in the file:
+queue year,disk_size from years_size.txt
