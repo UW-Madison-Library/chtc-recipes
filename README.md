@@ -25,3 +25,7 @@ This will generate the file
 `./dist/wos_explorer-0.2.1.tar.gz`
 
 Note that the version number may be different when you run it. This file will be used with CHTC Condor jobs.
+
+#### Creating a Python distribution that bundles WOS Explorer and its dependencies
+
+Once you have built a copy of the WOS Explorer package, you will then need to create a build of Python that bundles Python, the WOS Explorer package and its dependencies (namely the NLTK package). The CHTC website has instructions for building such a Python distribution: [Running Python Jobs on CHTC](https://chtc.cs.wisc.edu/uw-research-computing/python-jobs). See the section <strong>Adding Python Packages</strong> that shows how to use a CHTC Interactive Job.

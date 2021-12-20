@@ -1,11 +1,11 @@
 #!/bin/bash
 
 # Unpack and setup the CHTC compiled Python build
-tar -xzf python36.tar.gz
-tar -xzf wos_explorer-0.5.0.tar.gz
+tar -xzf python38.tar.gz
+tar -xzf wosexp-with-dependencies.tar.gz
 
 export PATH=$PWD/python/bin:$PATH
-export PYTHONPATH=$PWD/wos_explorer-0.5.0
+export PYTHONPATH=$PWD/packages
 
 # Command line specifies the year to process
 year="$1"
@@ -34,6 +34,6 @@ for file in output/*.json ; do
   gzip $file
 done
 
-staging_storage_dir="/staging/stephenmeyer/journal-matches"
+staging_storage_dir="/staging/<USERNAME>/journal-matches"
 mkdir -p $staging_storage_dir
 cp "${output_dir}/"*.gz $staging_storage_dir
