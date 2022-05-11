@@ -6,7 +6,7 @@ from datetime import datetime
 
 start          = datetime.today()
 article_file   = "articles.csv"
-LAST_DATA_YEAR = 2019
+LAST_DATA_YEAR = 2021
 
 
 print("Identifying Earliest Year in WOS Article File")
@@ -15,7 +15,7 @@ years = set()
 with open(article_file) as csv_file:
     for article in csv.DictReader(csv_file):
         year = int(article["Year"])
-        if year >= 1945 and year < 2020:
+        if year >= 1945 and year < 2022:
             years.add(year)
         elif year < 1945:
             years.add(1900)

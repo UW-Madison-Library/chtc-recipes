@@ -150,4 +150,8 @@ JOB A74 wos_citationpairs.sub
 VARS A74 year="2018"
 JOB A75 wos_citationpairs.sub
 VARS A75 year="2019"
+JOB A76 wos_citationpairs.sub
+VARS A76 year="2020"
+JOB A77 wos_citationpairs.sub
+VARS A77 year="2021"
 RETRY ALL_NODES 5

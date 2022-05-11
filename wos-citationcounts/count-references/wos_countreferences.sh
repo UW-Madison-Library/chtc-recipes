@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Unpack and setup the CHTC compiled Python build
-tar -xzf python36.tar.gz
+tar -xzf python39.tar.gz
 
 export PATH=$PWD/python/bin:$PATH
 

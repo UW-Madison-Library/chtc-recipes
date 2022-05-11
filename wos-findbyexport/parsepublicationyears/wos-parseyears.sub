@@ -7,7 +7,7 @@ executable = wos_parseyears.sh
 output = wos_parseyears_$(Cluster)_$(Process).out
 
 should_transfer_files = YES
-transfer_input_files = http://proxy.chtc.wisc.edu/SQUID/chtc/python36.tar.gz, parse_years.py, ../savedrecs.txt
+transfer_input_files = http://proxy.chtc.wisc.edu/SQUID/chtc/python39.tar.gz, parse_years.py, ../savedrecs.txt
 
 request_cpus = 1
 request_memory = 1GB

@@ -7,7 +7,7 @@ do
         if [ $year -lt "1945" ]; then
             echo "1900" >> "years-tmp.txt"
             echo "${line}" >> "1900-references.tsv"
-        elif [ $year -lt "2020" ]; then
+        elif [ $year -lt "2022" ]; then
             echo "${line:0:4}" >> "years-tmp.txt"
             echo "${line}" >> "${line:0:4}-references.tsv"
         fi
