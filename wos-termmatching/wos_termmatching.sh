@@ -6,7 +6,7 @@ tar -xzf wosexp-with-dependencies.tar.gz
 
 export PATH=$PWD/python/bin:$PATH
 export PYTHONPATH=$PWD/packages
-python3 -c 'import nltk; nltk.download("punkt")'
+export NLTK_DATA=$PWD/packages/nltk-data
 
 # Command line specifies the year to process
 input_file="$1"

@@ -13,7 +13,7 @@ transfer_input_files = http://proxy.chtc.wisc.edu/SQUID/chtc/python39.tar.gz, wo
 
 request_cpus = 1
 request_memory = 1GB
-request_disk = 2GB
+request_disk = 5GB
 
 # Tell HTCondor to run one job for each year in the file:
 queue input_file from input_files.txt
