@@ -11,34 +11,25 @@ from wos_explorer.matchers import SourceTitleMatcher
 import finder_logging
 
 
-start         = datetime.today()
-year          = sys.argv[1]
-cluster_id    = sys.argv[2]
-process_id    = sys.argv[3]
-input_files   = glob.glob("data/*.json")
-journals_file = "journals.csv"
+start             = datetime.today()
+zipped_input_file = sys.argv[1]
+json_input_file   = os.path.splitext(os.path.basename(zipped_input_file))[0]
+cluster_id        = sys.argv[2]
+process_id        = sys.argv[3]
+journals_file     = "journals.csv"
 
 
-print( "Find by WOS Export - Processing Data for Year:", year, cluster_id, process_id )
+print( "Find by WOS Export - Processing Data for Year:", zipped_input_file, cluster_id, process_id )
 finder_logging.configure(cluster_id, process_id)
 
 
-match_collections = []
 source_titles = [journal['Full Journal Title'] for journal in csv.DictReader( open(journals_file) )]
-criteria = SourceTitleMatcher(source_titles)
-for input_file in input_files:
-    output_file = "output/" + os.path.splitext(os.path.basename(input_file))[0] + "-article-matches.json"
-    match_collections.append( ArticleCollection(input_file).select(criteria, output_file) )
-
-
-article_match_count = 0
-for matched_collection in match_collections:
-    for article in matched_collection:
-        article_match_count += 1
+criteria      = SourceTitleMatcher(source_titles)
+output_file   = "output/" + os.path.splitext(os.path.basename(json_input_file))[0] + "-article-matches.json"
+ArticleCollection("data/" + json_input_file).select(criteria, output_file)
 
 
 finish = datetime.today()
-print( "Articles:  ", article_match_count )
 print( "Started:   ", start )
 print( "Finished:  ", finish )
 print( "Time Spent:", finish - start, "\n" )

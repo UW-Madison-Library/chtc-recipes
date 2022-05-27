@@ -4,7 +4,7 @@ universe = vanilla
 log = wos_journalmatching_$(Cluster).log
 error = wos_journalmatching_$(Cluster)_$(Process).err
 executable = wos_journalmatching.sh
-arguments = $(year) $(Cluster) $(Process)
+arguments = $(input_file) $(Cluster) $(Process)
 output = wos_journalmatching_$(Cluster)_$(Process).out
 Requirements = (HasCHTCStaging == true)
 
@@ -13,7 +13,7 @@ transfer_input_files = http://proxy.chtc.wisc.edu/SQUID/chtc/python39.tar.gz, wo
 
 request_cpus = 1
 request_memory = 1GB
-request_disk = $(disk_size)
+request_disk = 5GB
 
 # Tell HTCondor to run one job for each year in the file:
-queue year,disk_size from years_size.txt
+queue input_file from input_files.txt
