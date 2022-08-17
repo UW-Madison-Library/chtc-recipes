@@ -2,29 +2,36 @@
 
 # Unpack and setup the CHTC compiled Python build
 tar -xzf python39.tar.gz
-tar -xzf wos_explorer-0.7.3.tar.gz
+tar -xzf wosexp-with-dependencies.tar.gz
 
 export PATH=$PWD/python/bin:$PATH
-export PYTHONPATH=$PWD/wos_explorer-0.7.3
-python3 -c 'import nltk; nltk.download("punkt")'
+export PYTHONPATH=$PWD/packages
+export NLTK_DATA=$PWD/packages/nltk-data
 
 # Command line specifies the year to process
-year="$1"
-cluster_id="$2"
-process_id="$3"
+input_file="$1"
+id_list="$2"
+cluster_id="$3"
+process_id="$4"
 
 # Create a directory for the article data file so it is not copied back to the submit server
 working_data_dir="data"
+output_dir="output"
 source_dir="/staging/groups/clarivate_data/2022-complete-extract"
 
-# Copy the source files to the working location. The Emerging Science Citation Index (ESCI)
-# files only exist from 2015 onward.
+# Copy the source files to the working location.
 mkdir $working_data_dir
-cp "${source_dir}/${year}_CORE"*.json.gz $working_data_dir
-if [ $year -gt "2004" ]; then
-  cp "${source_dir}/${year}_ESCI"*.json.gz $working_data_dir
-fi
-gunzip "${working_data_dir}/"*.gz
+mkdir $output_dir
+cp "${source_dir}/${input_file}" $working_data_dir
+gunzip "${working_data_dir}/${input_file}"
 
 # Run the Python code to process the file and find records
-python3 find_references.py $year $cluster_id $process_id
+python3 find_references.py $input_file $id_list $cluster_id $process_id
+
+for file in output/*.json ; do
+  gzip $file
+done
+
+staging_storage_dir="/staging/<USERNAME>/findbyexportfile-matches"
+mkdir -p $staging_storage_dir
+cp "${output_dir}/"*.gz $staging_storage_dir

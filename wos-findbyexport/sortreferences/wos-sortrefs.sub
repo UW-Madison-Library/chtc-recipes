@@ -7,7 +7,7 @@ executable = wos_sortrefs.sh
 output = wos_sortrefs_$(Cluster)_$(Process).out
 
 should_transfer_files = YES
-transfer_input_files = input/
+transfer_input_files = input, http://proxy.chtc.wisc.edu/SQUID/chtc/python39.tar.gz, sort_references.py, ../input_files.txt
 transfer_output_remaps = "wos-findreferences.dag = ../wos-findreferences.dag"
 
 request_cpus = 1

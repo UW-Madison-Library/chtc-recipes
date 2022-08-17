@@ -1,5 +1,5 @@
 JOB A wos-parseyears.sub DIR parsepublicationyears
-SCRIPT POST A mv_step1_years.sh
+SCRIPT POST A mv_step1_inputfiles.sh
 JOB B wos-findbywosexport.sub DIR findbyexportfile
 SCRIPT POST B mv_step2_refs.sh
 JOB C wos-sortrefs.sub DIR sortreferences

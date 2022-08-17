@@ -1,4 +1,4 @@
 #!/bin/bash
 
 mkdir -p ../findreferences/input
-mv *-references.tsv ../findreferences/input/
+mv *_id_list.txt ../findreferences/input/

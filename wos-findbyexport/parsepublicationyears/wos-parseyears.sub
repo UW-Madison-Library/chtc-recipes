@@ -7,11 +7,11 @@ executable = wos_parseyears.sh
 output = wos_parseyears_$(Cluster)_$(Process).out
 
 should_transfer_files = YES
-transfer_input_files = http://proxy.chtc.wisc.edu/SQUID/chtc/python39.tar.gz, parse_years.py, ../savedrecs.txt
+transfer_input_files = http://proxy.chtc.wisc.edu/SQUID/chtc/python39.tar.gz, parse_years.py, ../savedrecs.txt, ../input_files.txt
 
 request_cpus = 1
 request_memory = 1GB
-request_disk = 20GB
+request_disk = 1GB
 
 # Tell HTCondor to run one job for each year in the file:
 queue

@@ -4,3 +4,5 @@
 /source-title-matching/wosexp-with-dependencies.tar.gz
 /source-title-matching/input_files.txt
 /**/__pycache__
+/wos-findbyexport/sortreferences/input
+/wos-findbyexport/findreferences/input
