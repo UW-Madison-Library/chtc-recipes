@@ -9,7 +9,7 @@ output = wos_citationpairs_$(Cluster)_$(Process).out
 Requirements = (HasCHTCStaging == true)
 
 should_transfer_files = YES
-transfer_input_files = http://proxy.chtc.wisc.edu/SQUID/chtc/python39.tar.gz, wos_explorer-0.2.1.tar.gz, find_citation_pairs.py
+transfer_input_files = http://proxy.chtc.wisc.edu/SQUID/chtc/python39.tar.gz, ../wos_explorer-0.7.3.tar.gz, find_citation_pairs.py
 
 request_cpus = 2
 request_memory = 4GB

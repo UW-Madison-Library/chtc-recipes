@@ -12,7 +12,7 @@ def write_citation_count_entry(output, article_id, referring_articles, most_cite
         most_cited_article["article_id"] = article_id
         most_cited_article["referring_article_count"] = referring_article_count
 
-    output.write("\t".join([article_id, str(referring_article_count)]) + "\n")
+    output.write("\t".join([article_id, str(referring_article_count), ",".join(referring_articles)]) + "\n")
     referring_articles.clear()
 
 
