@@ -13,6 +13,6 @@ transfer_input_files = http://proxy.chtc.wisc.edu/SQUID/chtc/python39.tar.gz, ..
 
 request_cpus = 2
 request_memory = 4GB
-request_disk = 110GB
+request_disk = 150GB
 
 queue
