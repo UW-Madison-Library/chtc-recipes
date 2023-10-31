@@ -2,9 +2,9 @@
 
 FROM alpine
 
-# 2. Install a basic Python and git environment.
+# 2. Install a basic bash, Python and git environment.
 
-RUN apk add --update python3 py3-pip python3-dev git
+RUN apk add --update bash python3 py3-pip python3-dev git
 
 # 3.0 Clone and install the primary dependency, the Web of Science Explorer package.
 
