@@ -1,0 +1,37 @@
+# 1. Begin with the very lightweight Alpine Linux image.
+
+FROM alpine
+
+# 2. Install a basic Python and git environment.
+
+RUN apk add --update python3 py3-pip python3-dev git
+
+# 3.0 Clone and install the primary dependency, the Web of Science Explorer package.
+
+RUN mkdir -p /tmp/setup
+RUN git clone https://github.com/UW-Madison-Library/wos-explorer.git /tmp/setup/wos-explorer
+
+# 3.1 From within the cloned repository, build and install the package.
+
+WORKDIR /tmp/setup/wos-explorer
+RUN python setup.py sdist
+RUN pip install dist/wos_explorer-0.7.3.tar.gz
+
+# 3.2 Install the punctuation data required by the wos-explorer's dependency, NLTK.
+
+RUN python3 -m nltk.downloader punkt
+
+# 4.0 Create the data directories for the sample data and script.
+
+RUN mkdir -p /sample-data/web-of-science
+RUN mkdir -p /work
+WORKDIR /work
+
+# 4.1 Copy the sample data and script to the image that are used by the default command.
+
+COPY sample-records.json /sample-data/web-of-science
+COPY confirmation_script.py /work
+
+# 5. Setup the default command that will confirm the image container is working correctly.
+
+CMD ["python", "/work/confirmation_script.py"]
