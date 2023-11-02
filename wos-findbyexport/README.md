@@ -53,8 +53,6 @@ Steps 2 and 4 also require a Python distribution package for the `wos_explorer` 
 
 Follow these steps to run these CHTC DAG jobs.
 
-1. [Generate a Python distribution package for the WOS Explorer library](https://github.com/UW-Madison-Library/chtc-recipes#creating-a-python-package-for-the-wos-explorer-for-use-within-chtc)
-1. Upload the Python `wos_explorer-<VERSION>-.tar.gz` package from step 1 to your account on the CHTC submit server
-1. Replace the `savedrecs.txt` file as needed
+1. Replace the default `savedrecs.txt` file in this repository with your own file "Fast 5K" export file from the Web of Science user interface.
 1. Copy the contents of this git project to your account on the CHTC submit server.
 1. SSH to the submit server and submit the DAG job `wos-findbywosexport.dag`
