@@ -1,20 +1,12 @@
 #!/bin/bash
 
-# Unpack and setup the CHTC compiled Python build
-tar -xzf python39.tar.gz
-tar -xzf wosexp-with-dependencies.tar.gz
-
-export PATH=$PWD/python/bin:$PATH
-export PYTHONPATH=$PWD/packages
-export NLTK_DATA=$PWD/packages/nltk-data
-
 # Command line specifies the year to process
 input_file="$1"
 cluster_id="$2"
 process_id="$3"
 
 # Create a directory for the article data file so it is not copied back to the submit server
-source_dir="/staging/groups/clarivate_data/2022-complete-extract"
+source_dir="/staging/groups/clarivate_data/2023-complete-extract"
 working_data_dir="data"
 output_dir="output"
 

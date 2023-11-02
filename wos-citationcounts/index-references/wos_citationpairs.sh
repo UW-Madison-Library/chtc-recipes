@@ -1,12 +1,5 @@
 #!/bin/bash
 
-# Unpack and setup the CHTC compiled Python build
-tar -xzf python39.tar.gz
-tar -xzf wos_explorer-0.7.3.tar.gz
-
-export PATH=$PWD/python/bin:$PATH
-export PYTHONPATH=$PWD/wos_explorer-0.7.3
-
 # Command line specifies the year to process
 year="$1"
 cluster_id="$2"

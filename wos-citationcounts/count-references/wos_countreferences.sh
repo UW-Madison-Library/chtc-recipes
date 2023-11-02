@@ -1,10 +1,5 @@
 #!/bin/bash
 
-# Unpack and setup the CHTC compiled Python build
-tar -xzf python39.tar.gz
-
-export PATH=$PWD/python/bin:$PATH
-
 # Command line specifies the year to process
 prefix="$1"
 cluster_id="$2"

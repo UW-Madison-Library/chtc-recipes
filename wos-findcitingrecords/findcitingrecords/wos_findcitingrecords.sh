@@ -1,13 +1,5 @@
 #!/bin/bash
 
-# Unpack and setup the CHTC compiled Python build
-tar -xzf python39.tar.gz
-tar -xzf wos_explorer-0.7.3.tar.gz
-
-export PATH=$PWD/python/bin:$PATH
-export PYTHONPATH=$PWD/wos_explorer-0.7.3
-python3 -c 'import nltk; nltk.download("punkt")'
-
 # Command line specifies the year to process
 year="$1"
 cluster_id="$2"
@@ -15,7 +7,7 @@ process_id="$3"
 
 # Create a directory for the article data file so it is not copied back to the submit server
 working_data_dir="data"
-source_dir="/staging/groups/clarivate_data/2022-complete-extract"
+source_dir="/staging/groups/clarivate_data/2023-complete-extract"
 output_dir="output"
 
 # Copy the source files to the working location. The Emerging Science Citation Index (ESCI)
@@ -35,6 +27,6 @@ for file in output/*.json ; do
   gzip $file
 done
 
-staging_storage_dir="/staging/<NETID>/find-citing-refs"
+staging_storage_dir="/staging/<USERNAME>/find-citing-refs"
 mkdir -p $staging_storage_dir
 cp "${output_dir}/"*.gz $staging_storage_dir
