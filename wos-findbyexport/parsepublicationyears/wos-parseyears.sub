@@ -1,17 +1,19 @@
 # wos-parseyears.sub
 # Submit a job to parse which years appear in an exported file of article data
-universe = vanilla
-log = wos_parseyears_$(Cluster).log
-error = wos_parseyears_$(Cluster)_$(Process).err
+container_image = docker://stephenmeyer/alpine-wos-explorer:0.2.0-chtc
+universe = container
+
+log        = wos_parseyears_$(Cluster).log
+error      = wos_parseyears_$(Cluster)_$(Process).err
 executable = wos_parseyears.sh
-output = wos_parseyears_$(Cluster)_$(Process).out
+output     = wos_parseyears_$(Cluster)_$(Process).out
 
 should_transfer_files = YES
-transfer_input_files = http://proxy.chtc.wisc.edu/SQUID/chtc/python39.tar.gz, parse_years.py, ../savedrecs.txt, ../input_files.txt
+transfer_input_files  = parse_years.py, ../savedrecs.txt, ../input_files.txt
 
-request_cpus = 1
+request_cpus   = 1
 request_memory = 1GB
-request_disk = 1GB
+request_disk   = 1GB
 
 # Tell HTCondor to run one job for each year in the file:
 queue

@@ -1,13 +1,5 @@
 #!/bin/bash
 
-# Unpack and setup the CHTC compiled Python build
-tar -xzf python39.tar.gz
-tar -xzf wosexp-with-dependencies.tar.gz
-
-export PATH=$PWD/python/bin:$PATH
-export PYTHONPATH=$PWD/packages
-export NLTK_DATA=$PWD/packages/nltk-data
-
 # Command line specifies the year to process
 input_file="$1"
 cluster_id="$2"

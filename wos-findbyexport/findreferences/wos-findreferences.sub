@@ -1,18 +1,20 @@
 # wos-extractbyid.sub
 # Submit a job to find records by IDs in the Web of Science data set
-universe = vanilla
-log = wos_findreferences_$(Cluster).log
-error = wos_findreferences_$(Cluster)_$(Process).err
-executable = wos_findreferences.sh
-arguments = $(input_file) $(id_list) $(Cluster) $(Process)
-output = wos_findreferences_$(Cluster)_$(Process).out
-Requirements = (HasCHTCStaging == true)
+container_image = docker://stephenmeyer/alpine-wos-explorer:0.2.0-chtc
+universe = container
+
+log          = wos_findreferences_$(Cluster).log
+error        = wos_findreferences_$(Cluster)_$(Process).err
+executable   = wos_findreferences.sh
+arguments    = $(input_file) $(id_list) $(Cluster) $(Process)
+output       = wos_findreferences_$(Cluster)_$(Process).out
+Requirements = (Target.HasCHTCStaging == true)
 
 should_transfer_files = YES
-transfer_input_files = http://proxy.chtc.wisc.edu/SQUID/chtc/python39.tar.gz, ../wosexp-with-dependencies.tar.gz, find_references.py, ../finder_logging.py, input/$(id_list)
+transfer_input_files  = find_references.py, ../finder_logging.py, input/$(id_list)
 
-request_cpus = 1
+request_cpus   = 1
 request_memory = 1GB
-request_disk = 20GB
+request_disk   = 20GB
 
 queue
