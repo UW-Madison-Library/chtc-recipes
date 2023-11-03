@@ -27,7 +27,7 @@ inventory_by_year = defaultdict(set)
 with open(file_inventory, "r", encoding="utf-8") as inventory:
     for line in inventory:
         wos_file = line.strip()
-        year = int(wos_file[0:4])
+        year = int(wos_file[3:7])
         inventory_by_year[year].add(wos_file)
 
 
@@ -37,7 +37,7 @@ for input_file in glob.glob("input/*.tsv"):
     with open(input_file, "r", encoding="utf-8") as file:
         for line in file:
             year, id = line.split("\t")
-            if year != "BLANK" and year <= "2021" and id.strip() != "":
+            if year != "BLANK" and year <= "2022" and id.strip() != "":
                 year = int(year[0:4])
                 year = year if year >= 1945 else 1900
 

@@ -17,14 +17,14 @@ inventory_by_year = defaultdict(set)
 with open(file_inventory, "r", encoding="utf-8") as inventory:
     for line in inventory:
         wos_file = line.strip()
-        year = int(wos_file[0:4])
+        year = int(wos_file[3:7])
         inventory_by_year[year].add(wos_file)
 
 
 years = set()
 for article in csv.DictReader( open(exported_file), delimiter='\t' ):
     year = int(article['PY'])
-    if year >= 1945 and year < 2022:
+    if year >= 1945 and year < 2023:
         years.add(year)
     elif year < 1945:
         years.add(1900)
