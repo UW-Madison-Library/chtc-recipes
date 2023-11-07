@@ -57,8 +57,8 @@ Follow these steps to run these CHTC DAG jobs.
 1. Clone this repository to your local computer.
 1. Replace the default `savedrecs.txt` file in this repository with your own file "Fast 5K" export file from the Web of Science user interface.
 1. Update the reference to the staging location associated with your account's username:
-  1. [findbyexportfile/wos_findbywosexport.sh](findbyexportfile/wos_findbywosexport.sh#L26)
-  1. [findbyexportfile/wos_findbywosexport.sh](findbyexportfile/wos_findbywosexport.sh#L26)
+   1. [findbyexportfile/wos_findbywosexport.sh](findbyexportfile/wos_findbywosexport.sh#L26)
+   1. [findbyexportfile/wos_findbywosexport.sh](findbyexportfile/wos_findbywosexport.sh#L26)
 1. Copy the contents of this git project to your account on the CHTC submit server.
 1. SSH to the submit server and submit the DAG job `wos-findbywosexport.dag`
 
