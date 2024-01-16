@@ -19,10 +19,17 @@ gunzip "${working_data_dir}/${input_file}"
 # Run the Python code to process the file and find records
 python3 find_by_wos_export.py $input_file $cluster_id $process_id
 
-for file in output/*.json ; do
-  gzip $file
-done
-
 staging_storage_dir="/staging/<USERNAME>/findbyexportfile-matches"
 mkdir -p $staging_storage_dir
-cp "${output_dir}/"*.gz $staging_storage_dir
+
+for file in output/*.json ; do
+  echo "Processing output file ${file}"
+  if [ -s $file ]
+  then
+    gzip $file
+    cp ${file}.gz $staging_storage_dir
+    echo "Compressed and copied to staging."
+  else
+    echo "File empty. Not copying to staging."
+  fi
+done

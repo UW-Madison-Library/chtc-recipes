@@ -54,16 +54,43 @@ This job is equivalent to step 2. It matches article records by their IDs. The i
 
 Follow these steps to run these CHTC DAG jobs.
 
-1. Clone this repository to your local computer.
-1. Replace the default `savedrecs.txt` file in this repository with your own file "Fast 5K" export file from the Web of Science user interface.
-1. Update the reference to the staging location associated with your account's username:
-   1. [findbyexportfile/wos_findbywosexport.sh](findbyexportfile/wos_findbywosexport.sh#L26)
-   1. [findreferences/wos_findreferences.sh](findreferences/wos_findreferences.sh#L27)
-1. Copy the contents of this git project to your account on the CHTC submit server.
-1. SSH to the submit server and submit the DAG job `wos-findbywosexport.dag`
+1) Clone this repository to your local computer.
+
+```bash
+$ git clone git@github.com:UW-Madison-Library/chtc-recipes.git
+```
+
+Note that this recipe is one of many. You will clone (or checkout) the entire repository and only need to work with the recipe inside the `wos-findbyexport` directory.
+
+2) Customize your input data.
+
+Replace the default `savedrecs.txt` file in this repository with your own file "Fast 5K" export file from the Web of Science user interface.
+
+3) Update the reference to the staging location associated with your account's username.
+
+You will need to update the shell scripts at the following paths:
+
+1. [findbyexportfile/wos_findbywosexport.sh](findbyexportfile/wos_findbywosexport.sh)
+1. [findreferences/wos_findreferences.sh](findreferences/wos_findreferences.sh)
+
+Replace `<USERNAME>` with your actual username on the CHTC servers.
+
+4) Copy the contents of this recipe to your account on the CHTC submit server.
+
+Using an FTP program, for example, copy the updated contents of the `wos-findbyexport` directory to a CHTC submit server. It is recommended that you create a sub-directory within your submit server home directory.
+
+5) Submit the DAG job.
+
+SSH to the submit server and submit the DAG job.
+
+```bash
+$ condor_submit_dag wos-findbywosexport.dag
+```
 
 After the Condor jobs have completed, the data will be available at the following location on the CHTC staging file system:
 
 ```
 /staging/<USERNAME>/findbyexportfile-matches
 ```
+
+Note that the output files will be compressed using `gzip` before they are copied to the staging directories. Download the `.gz` files and uncompress them.
