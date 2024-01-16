@@ -1,3 +1,5 @@
+# Used for stephenmeyer/alpine-wos-explorer:X.X.X-chtc versions pushed to Docker Hub
+
 # 1. Begin with the very lightweight Alpine Linux image.
 
 FROM alpine
@@ -15,7 +17,7 @@ RUN git clone https://github.com/UW-Madison-Library/wos-explorer.git /tmp/setup/
 
 WORKDIR /tmp/setup/wos-explorer
 RUN python setup.py sdist
-RUN pip install dist/wos_explorer-0.7.3.tar.gz
+RUN pip install --break-system-packages dist/wos_explorer-0.8.0.tar.gz
 
 # 3.2 Install the punctuation data required by the wos-explorer's dependency, NLTK.
 
