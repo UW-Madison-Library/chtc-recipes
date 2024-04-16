@@ -1,7 +1,7 @@
-container_image = docker://stephenmeyer/alpine-wos-explorer:0.2.0-chtc
+container_image = docker://stephenmeyer/alpine-wos-explorer-file-sorter:0.2.0-chtc
 universe = container
 
-log          = wos_concatsort_$(Cluster).log
+log          = wos_concatsort_$(Cluster)_$(Process).log
 error        = wos_concatsort_$(Cluster)_$(Process).err
 executable   = wos_concat_and_sort.sh
 arguments    = $(prefix) $(Cluster) $(Process)
@@ -9,8 +9,8 @@ output       = wos_concatsort_$(Cluster)_$(Process)_$(prefix).out
 Requirements = (Target.HasCHTCStaging == true)
 
 
-request_cpus   = 1
-request_memory = 4GB
+request_cpus   = 4
+request_memory = 8GB
 request_disk   = 64GB
 
 

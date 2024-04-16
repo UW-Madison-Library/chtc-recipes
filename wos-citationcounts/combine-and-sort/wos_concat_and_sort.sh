@@ -26,18 +26,20 @@ done
 echo "Finished unzipping files at `date`"
 
 # Combine all data into a single file, sort it, compress it and copy it back to the Staging file system
-echo "Sorting files at `date`"
-unzipped_file_glob="${prefix}-*.txt"
+echo "Merging all files `date`"
+unzipped_file_glob="*.txt"
+combined_file="all-records.merged"
 sorted_file="${prefix}-records.sorted.txt"
+cat data/$unzipped_file_glob > data/$combined_file
+echo "Finished merging files at `date`"
 
-# Sort the files individually
-for file in data/$unzipped_file_glob ; do
-  sort $file -o "${file}".sorted
-  mv "${file}".sorted $file
-done
+echo "Sorting the combined file at `date`"
+java -Xms2g -Xmx2g -jar /work/filesorter-0.4.0.jar data/$combined_file
+echo "Finished sorting combined file `date`"
 
-# Merge the files together
-find data -maxdepth 1 -type f -name $unzipped_file_glob -print0 | xargs -0 sort -m -o $sorted_file
-gzip $sorted_file
-mv "${sorted_file}".gz $src_dir
-echo "Finished sorting files at `date`"
+# Move the sorted data back to staging
+echo "Moving sorted data to staging at `date`"
+mv data/$combined_file data/$sorted_file
+gzip data/$sorted_file
+mv "data/${sorted_file}".gz $src_dir
+echo "Files moved to staging at `date`"
