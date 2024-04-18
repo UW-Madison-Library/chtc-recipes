@@ -5,7 +5,7 @@ from datetime import datetime
 
 start          = datetime.today()
 article_file   = "articles.csv"
-LAST_DATA_YEAR = 2022
+LAST_DATA_YEAR = 2023
 
 
 print("Identifying Earliest Year in WOS Article File")

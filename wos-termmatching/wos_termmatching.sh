@@ -6,7 +6,7 @@ cluster_id="$2"
 process_id="$3"
 
 # Create a directory for the article data file so it is not copied back to the submit server
-source_dir="/staging/groups/clarivate_data/2023-complete-extract"
+source_dir="/staging/groups/clarivate_data/2024-complete-extract"
 working_data_dir="data"
 output_dir="output"
 

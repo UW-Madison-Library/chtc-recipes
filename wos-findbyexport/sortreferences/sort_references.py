@@ -37,7 +37,7 @@ for input_file in glob.glob("input/*.tsv"):
     with open(input_file, "r", encoding="utf-8") as file:
         for line in file:
             year, id = line.split("\t")
-            if year != "BLANK" and year <= "2022" and id.strip() != "":
+            if year != "BLANK" and year <= "2023" and id.strip() != "":
                 year = int(year[0:4])
                 year = year if year >= 1945 else 1900
 
