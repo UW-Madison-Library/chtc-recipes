@@ -1,6 +1,6 @@
 # wos-sortrefs.sub
 # Submit a job to sort the collected references from a matching job against the Web of Science data set
-container_image = docker://stephenmeyer/alpine-wos-explorer:0.2.0-chtc
+container_image = docker://stephenmeyer/alpine-wos-explorer:0.3.1-chtc
 universe = container
 
 log        = wos_sortrefs_$(Cluster).log
