@@ -6,7 +6,7 @@ universe = container
 log          = wos_findcitingrecords_$(Cluster).log
 error        = wos_findcitingrecords_$(Cluster)_$(Process).err
 executable   = wos_findcitingrecords.sh
-arguments    = $(year) $(Cluster) $(Process)
+arguments    = $(input_file) $(Cluster) $(Process)
 output       = wos_findcitingrecords_$(Cluster)_$(Process).out
 Requirements = (Target.HasCHTCStaging == true)
 
@@ -18,4 +18,4 @@ request_memory = 1GB
 request_disk   = 20GB
 
 # Tell HTCondor to run one job for each year in the file:
-queue year from years.txt
+queue input_file from custom_input_files.txt

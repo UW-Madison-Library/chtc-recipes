@@ -1,4 +1,4 @@
 JOB A wos-parseyears.sub DIR parsepublicationyears
-SCRIPT POST A mv_step1_years.sh
+SCRIPT POST A mv_step1_inputfiles.sh
 JOB B wos-findcitingrecords.sub DIR findcitingrecords
 PARENT A CHILD B

@@ -9,7 +9,7 @@ executable = wos_parseyears.sh
 output     = wos_parseyears_$(Cluster)_$(Process).out
 
 should_transfer_files = YES
-transfer_input_files  = parse_years.py, ../articles.csv
+transfer_input_files  = parse_years.py, ../articles.csv, ../input_files.txt
 
 request_cpus = 1
 request_memory = 1GB
