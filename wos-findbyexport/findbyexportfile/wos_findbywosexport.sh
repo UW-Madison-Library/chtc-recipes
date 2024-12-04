@@ -8,7 +8,7 @@ process_id="$3"
 # Create a directory for the article data file so it is not copied back to the submit server
 working_data_dir="data"
 output_dir="output"
-source_dir="/staging/groups/clarivate_data/2024-complete-extract"
+source_dir="/staging/groups/clarivate_data/2024-complete-extract/JSON"
 
 # Copy the source files to the working location.
 mkdir $working_data_dir
