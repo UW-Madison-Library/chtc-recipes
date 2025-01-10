@@ -17,7 +17,7 @@ RUN git clone https://github.com/UW-Madison-Library/wos-explorer.git /tmp/setup/
 
 WORKDIR /tmp/setup/wos-explorer
 RUN python setup.py sdist
-RUN pip install --break-system-packages dist/wos_explorer-0.8.0.tar.gz
+RUN pip install --break-system-packages dist/wos_explorer-0.9.0.tar.gz
 
 # 3.2 Install the punctuation data required by the wos-explorer's dependency, NLTK.
 
