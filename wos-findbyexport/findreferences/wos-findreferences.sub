@@ -1,6 +1,6 @@
 # wos-extractbyid.sub
 # Submit a job to find records by IDs in the Web of Science data set
-container_image = docker://stephenmeyer/alpine-wos-explorer:0.3.1-chtc
+container_image = docker://stephenmeyer/alpine-wos-explorer:0.5.2-chtc
 universe = container
 
 log          = wos_findreferences_$(Cluster).log
