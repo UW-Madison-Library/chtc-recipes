@@ -1,4 +1,4 @@
-container_image = docker://stephenmeyer/alpine-wos-explorer:0.5.2-chtc
+container_image = docker://stephenmeyer/alpine-wos-explorer-file-sorter:0.3.0-chtc
 universe = container
 
 log          = wos_concatsort_$(Cluster)_$(Process).log
