@@ -34,7 +34,7 @@ cat data/$unzipped_file_glob > data/$combined_file
 echo "Finished merging files at `date`"
 
 echo "Sorting the combined file at `date`"
-java -Xms2g -Xmx2g -jar /work/filesorter-0.4.0.jar data/$combined_file
+java -Xms2g -Xmx2g -jar /work/file-sorter-0.5.0.jar data/$combined_file
 echo "Finished sorting combined file `date`"
 
 # Move the sorted data back to staging
