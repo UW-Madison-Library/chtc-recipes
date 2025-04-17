@@ -7,7 +7,7 @@ process_id="$3"
 
 # Create a directory for the article data file so it is not copied back to the submit server
 working_data_dir="data"
-source_dir="/staging/groups/clarivate_data/2024-complete-extract/JSON"
+source_dir="/staging/groups/clarivate_data/2025-complete-extract/JSON"
 output_dir="output"
 
 # Copy the source files to the working location. The Emerging Science Citation Index (ESCI)

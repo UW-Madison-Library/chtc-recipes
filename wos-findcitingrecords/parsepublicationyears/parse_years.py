@@ -23,7 +23,7 @@ with open(file_inventory, "r", encoding="utf-8") as inventory:
 years = set()
 for article in csv.DictReader( open(articles_file) ):
     year = int(article['Year'])
-    if year >= 1945 and year < 2024:
+    if year >= 1945 and year < 2025:
         years.add(year)
     elif year < 1945:
         years.add(1900)
