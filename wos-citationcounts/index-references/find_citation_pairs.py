@@ -9,7 +9,7 @@ from datetime import datetime
 from wos_explorer.article_collection import ArticleCollection
 
 
-CHILD_ID_PATTERN = re.compile('.+\.\d+$')
+CHILD_ID_PATTERN = re.compile(r'.+\.\d+$')
 
 
 def get_file_bin(output_files, article_id, output_dir, year):
