@@ -1,4 +1,5 @@
 # Used for stephenmeyer/alpine-wos-explorer:X.X.X-chtc versions pushed to Docker Hub
+# Current version: docker://stephenmeyer/alpine-wos-explorer:0.6.0
 
 # 1. Begin with the very lightweight Alpine Linux image.
 
@@ -6,18 +7,17 @@ FROM alpine
 
 # 2. Install a basic bash, Python and git environment.
 
-RUN apk add --update bash python3 py3-pip python3-dev git
+RUN apk add --update bash python3 py3-pip python3-dev
 
 # 3.0 Clone and install the primary dependency, the Web of Science Explorer package.
 
-RUN mkdir -p /tmp/setup
-RUN git clone https://github.com/UW-Madison-Library/wos-explorer.git /tmp/setup/wos-explorer
+RUN mkdir -p /tmp/setup/wos-explorer
+COPY wos_explorer-0.11.0.tar.gz /tmp/setup/wos-explorer
 
 # 3.1 From within the cloned repository, build and install the package.
 
 WORKDIR /tmp/setup/wos-explorer
-RUN python setup.py sdist
-RUN pip install --break-system-packages dist/wos_explorer-0.10.0.tar.gz
+RUN pip install --break-system-packages wos_explorer-0.11.0.tar.gz
 
 # 3.2 Install the punctuation data required by the wos-explorer's dependency, NLTK.
 
