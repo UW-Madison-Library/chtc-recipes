@@ -8,3 +8,4 @@
 /wos-findbyexport/findreferences/input
 wos_explorer-*.tar.gz
 filesorter*
+.vscode
