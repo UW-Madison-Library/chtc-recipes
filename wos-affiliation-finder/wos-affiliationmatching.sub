@@ -1,0 +1,21 @@
+# wos-affiliationmatching.sub
+# Submit a job to find records by matching author institutional affiliations in the Web of Science data set
+container_image = docker://stephenmeyer/alpine-wos-explorer:0.6.0-chtc
+universe = container
+
+log          = wos_affiliationmatching_$(Cluster).log
+error        = wos_affiliationmatching_$(Cluster)_$(Process).err
+executable   = wos_affiliationmatching.sh
+arguments    = $(input_file) $(Cluster) $(Process)
+output       = wos_affiliationmatching_$(Cluster)_$(Process).out
+Requirements = (Target.HasCHTCStaging == true)
+
+should_transfer_files = YES
+transfer_input_files  = finder_logging.py, match_affiliations.py, affiliations.csv
+
+request_cpus   = 1
+request_memory = 1GB
+request_disk   = 5GB
+
+# Tell HTCondor to run one job for each year in the file:
+queue input_file from input_files.txt
