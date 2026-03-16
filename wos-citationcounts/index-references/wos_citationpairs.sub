@@ -15,6 +15,6 @@ transfer_input_files  = find_citation_pairs.py
 
 request_cpus   = 2
 request_memory = 4GB
-request_disk   = 150GB
+request_disk   = 200GB
 
 queue

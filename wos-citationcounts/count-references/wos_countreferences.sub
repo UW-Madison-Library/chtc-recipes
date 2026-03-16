@@ -15,6 +15,6 @@ transfer_input_files  = count_sorted_references.py
 
 request_cpus   = 1
 request_memory = 4GB
-request_disk   = 20GB
+request_disk   = 160GB
 
 queue

@@ -160,6 +160,6 @@ JOB A79 wos_citationpairs.sub
 VARS A79 year="2023"
 JOB A80 wos_citationpairs.sub
 VARS A80 year="2024"
-RETRY ALL_NODES 5
+JOB A81 wos_citationpairs.sub
 VARS A81 year="2025"
 RETRY ALL_NODES 5
